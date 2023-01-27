@@ -1,14 +1,17 @@
+package Heroes;
+
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class BaseHero implements BaseInterface {
+  protected boolean isEnemy;
   protected String name, role;
   protected int attack, defence, health, maxHealth, speed;
   protected int[] damage;
 
   public BaseHero(String name, String role, int attack, int defence, int[] damage,
-                  int health, int speed) {
+                  int health, int speed, boolean isEnemy) {
     this.role =role;
     this.name = name;
     this.attack = attack;
@@ -18,18 +21,15 @@ public abstract class BaseHero implements BaseInterface {
     this.maxHealth = health;
     this.health = maxHealth - new Random().nextInt(maxHealth);
     this.speed = speed;
+    this.isEnemy = isEnemy;
   }
-  public int getHealth(){
-    return (int) health / maxHealth * 100;
-  }
-  @Override
+
   public void step(ArrayList<BaseHero> heroList) {
   }
 
-  @Override
   public String getInfo() {
-    return name + " " + role + " ОЗ.:" + health + "/" + maxHealth;
-  }
+    return name + " " + role + " ОЗ.: " + health * 100 / maxHealth + " % [ " + maxHealth + " ]";
+  }   // ОЗ - очки здоровья
 
   @Override
   public String toString() {

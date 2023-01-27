@@ -1,14 +1,14 @@
 package Heroes;
 
-import Heroes.BaseHero;
+import java.util.ArrayList;
 
-public abstract class Magics extends BaseHero {
+public abstract class ManaMagic extends BaseHero {
     protected int mana;
-    public Magics(String name, String role, int attack, int defence, int[] damage, int health, int speed, int mana) {
-        super(name, role, attack, defence, damage, health, speed);
+    public ManaMagic(String name, String role, int attack, int defence,
+                     int[] damage, int health, int speed, boolean isEnemy, int mana) {
+        super(name, role, attack, defence, damage, health, speed, isEnemy);
         this.mana = mana;
     }
-
     @Override
     public String toString() {
         return super.toString() + ", Мана: " + mana;
