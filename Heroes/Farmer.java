@@ -1,26 +1,27 @@
 package Heroes;
 
+import BatleField.Vector2;
+
+import java.util.List;
+
 public class Farmer extends BaseHero {
-    protected int supply;
+    public boolean supply;
 
-    public Farmer(String name, String role, int attack, int defence,
-                  int[] damage, int health, int speed, boolean isEnemy, int supply) {
-        super(name, role, attack, defence, damage, health, speed, isEnemy);
-        this.supply = supply;
+    public Farmer(String name, List<BaseHero> gang, int x, int y) {
+        super(gang, name, "Колхозник", 1, 1, new int[] {1, 1}, 1, 3, new Vector2(1, 1));
+        supply = true;
+        super.gang = gang;
+        super.position = new Vector2(x, y);
     }
 
-    public Farmer(String name) {
-        super(name, "Колхозник", 1, 1, new int[] {1, 1}, 1, 3, false);
-        this.supply = 1;
-    }
-
+    @Override
     public String getInfo() {
-        return name + " " + role + " ОЗ.: " + health * 100 / maxHealth + " % [ " + maxHealth
-                    + " ]" + " Свободен: " + supply;
+        String outStr = String.format("⚔ %d\t\uD83D\uDEE1 %d\t♥%.1f\t☠%d\t", attack, defence, health, (damage[0] + damage[1]) / 2);
+        return outStr;
     }
 
     @Override
     public String toString() {
-        return super.toString() + ", Поддержка: " + supply;
+        return "Колхозник" + "\t" + super.getInfo();
     }
 }
