@@ -5,6 +5,8 @@ import Heroes.Archers.Crossbowman;
 import Heroes.Archers.Sniper;
 import Heroes.Healers.Mage;
 import Heroes.Healers.Monk;
+import Heroes.Melee.Rogue;
+import Heroes.Melee.Spearman;
 
 import java.io.IOException;
 import java.nio.file.Files;
